@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yen to usd</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      input,
+      select {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin-bottom: 8px; text-align: center">
+      <h1>Yen to usd</h1>
+      By Kyle!
+    </div>
+
+    <div>
+      $1 is
+      <input
+        style="width: 40px"
+        type="number"
+        id="yenInput"
+        placeholder="Value"
+        value="141"
+      />
+      yen
+    </div>
+
+    <h2>Savings</h2>
+    <!-- calculate the amount of savings in usd using the price of the item in yen and the conversion rate -->
+    <input style="width: 64px" type="number" placeholder="Price ¥" />
+  </body>
+</html>
