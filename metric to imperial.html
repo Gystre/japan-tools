@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Metric to Imperial</title>
     <style>
       body {
         height: 100vh;
@@ -24,7 +24,7 @@
 
       input,
       select {
-        font-size: 16px;
+        font-size: 14px;
       }
     </style>
   </head>
@@ -90,7 +90,7 @@
 
         // set the result paragraph to the imperial value
         resultParagraph.textContent =
-          imperialValue.toFixed(3) + " " + imperialUnit;
+          imperialValue.toFixed(2) + " " + imperialUnit;
       }
 
       metricInput.addEventListener("input", convertAndDisplay);
@@ -170,7 +170,7 @@
         }
 
         imperialWeightResult.textContent =
-          imperialWeightValue.toFixed(3) + " " + imperialWeightUnit;
+          imperialWeightValue.toFixed(2) + " " + imperialWeightUnit;
       }
 
       metricWeightInput.addEventListener("input", convertAndDisplay);
