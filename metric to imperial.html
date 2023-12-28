@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      input,
+      select {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Metric to Imperial</h1>
+    <h2>Length</h2>
+    <!-- input that is able to convert from mm, cm, m km to in, ft, and miles -->
+    <div style="margin-bottom: 4px">
+      <input
+        style="width: 64px"
+        type="number"
+        id="metricInput"
+        placeholder="Value"
+      />
+      <select id="metricSelect">
+        <option value="mm">mm</option>
+        <option value="cm" selected>cm</option>
+        <option value="m">m</option>
+        <option value="km">km</option>
+      </select>
+      to
+      <select id="imperialSelect">
+        <option value="in">inches</option>
+        <option value="ft">feet</option>
+        <option value="mi">miles</option>
+      </select>
+      is
+      <span id="imperialLengthResult"></span>
+    </div>
+
+    <script>
+      const metricInput = document.getElementById("metricInput");
+      const metricSelect = document.getElementById("metricSelect");
+      const imperialSelect = document.getElementById("imperialSelect");
+      const resultParagraph = document.getElementById("imperialLengthResult");
+
+      function convertAndDisplay() {
+        const metricValue = parseFloat(metricInput.value);
+        const metricUnit = metricSelect.value;
+        const imperialUnit = imperialSelect.value;
+
+        let imperialValue;
+        if (metricUnit === "mm") {
+          imperialValue = metricValue / 25.4;
+        } else if (metricUnit === "cm") {
+          imperialValue = metricValue / 2.54;
+        } else if (metricUnit === "m") {
+          imperialValue = (metricValue * 100) / 2.54;
+        } else if (metricUnit === "km") {
+          imperialValue = (metricValue * 100000) / 2.54;
+        } else {
+          imperialValue = 0;
+        }
+
+        if (imperialUnit === "ft") {
+          imperialValue /= 12;
+        } else if (imperialUnit === "mi") {
+          imperialValue /= 63360;
+        }
+
+        // set the result paragraph to the imperial value
+        resultParagraph.textContent =
+          imperialValue.toFixed(3) + " " + imperialUnit;
+      }
+
+      metricInput.addEventListener("input", convertAndDisplay);
+      metricSelect.addEventListener("change", convertAndDisplay);
+      imperialSelect.addEventListener("change", convertAndDisplay);
+    </script>
+
+    <h2 style="margin-top: 8px">Temperature</h2>
+    <div>
+      <input
+        style="width: 64px"
+        type="number"
+        id="celciusInput"
+        placeholder="Celcius"
+      />
+      C° is
+      <span id="fahrenheitResult"></span>
+    </div>
+    <script>
+      const celciusInput = document.getElementById("celciusInput");
+      const fahrenheitResult = document.getElementById("fahrenheitResult");
+
+      function convertAndDisplay() {
+        const celciusValue = parseFloat(celciusInput.value);
+        const fahrenheitValue = celciusValue * 1.8 + 32;
+        fahrenheitResult.textContent = fahrenheitValue.toFixed(2) + " F°";
+      }
+
+      celciusInput.addEventListener("input", convertAndDisplay);
+    </script>
+    <h2 style="margin-top: 8px">Weight</h2>
+    <div>
+      <input
+        style="width: 64px"
+        type="number"
+        id="metricWeightInput"
+        placeholder="Value"
+      />
+      <select id="metricWeightSelect">
+        <option value="g">g</option>
+        <option value="kg" selected>kg</option>
+      </select>
+      to
+      <select id="imperialWeightSelect">
+        <option value="oz">oz</option>
+        <option value="lb" selected>lb</option>
+      </select>
+      is
+      <span id="imperialWeightResult"></span>
+    </div>
+    <script>
+      const metricWeightInput = document.getElementById("metricWeightInput");
+      const metricWeightSelect = document.getElementById("metricWeightSelect");
+      const imperialWeightSelect = document.getElementById(
+        "imperialWeightSelect"
+      );
+      const imperialWeightResult = document.getElementById(
+        "imperialWeightResult"
+      );
+
+      function convertAndDisplay() {
+        const metricWeightValue = parseFloat(metricWeightInput.value);
+        const metricWeightUnit = metricWeightSelect.value;
+        const imperialWeightUnit = imperialWeightSelect.value;
+
+        let imperialWeightValue;
+        if (metricWeightUnit === "g") {
+          imperialWeightValue = metricWeightValue / 28.35;
+        } else if (metricWeightUnit === "kg") {
+          imperialWeightValue = metricWeightValue * 2.205;
+        } else {
+          imperialWeightValue = 0;
+        }
+
+        if (imperialWeightUnit === "oz") {
+          imperialWeightValue /= 16;
+        }
+
+        imperialWeightResult.textContent =
+          imperialWeightValue.toFixed(3) + " " + imperialWeightUnit;
+      }
+
+      metricWeightInput.addEventListener("input", convertAndDisplay);
+    </script>
+
+    <button style="margin-top: 8px" onclick="clearInputs()">Clear</button>
+    <script>
+      function clearInputs() {
+        // reset inputs
+        document.getElementById("metricInput").value = "";
+        document.getElementById("celciusInput").value = "";
+        document.getElementById("metricWeightInput").value = "";
+
+        // reset results
+        document.getElementById("imperialLengthResult").textContent = "";
+        document.getElementById("fahrenheitResult").textContent = "";
+        document.getElementById("imperialWeightResult").textContent = "";
+      }
+    </script>
+  </body>
+</html>
