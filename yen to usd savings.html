@@ -31,7 +31,6 @@
   <body>
     <div style="margin-bottom: 8px; text-align: center">
       <h1>Yen to usd</h1>
-      By Kyle!
     </div>
 
     <div>
@@ -46,8 +45,33 @@
       yen
     </div>
 
-    <h2>Savings</h2>
-    <!-- calculate the amount of savings in usd using the price of the item in yen and the conversion rate -->
-    <input style="width: 64px" type="number" placeholder="Price ¥" />
+    <div style="margin-top: 8px">
+      <input
+        id="priceInput"
+        style="width: 96px"
+        type="number"
+        placeholder="Price ¥"
+      />
+      is <span id="resultSpan"></span>
+    </div>
+    <script>
+      const priceInput = document.getElementById("priceInput");
+      const yenInput = document.getElementById("yenInput");
+      const resultSpan = document.getElementById("resultSpan");
+
+      function calculate() {
+        const price = parseFloat(priceInput.value);
+        const yenValue = parseFloat(yenInput.value);
+
+        // convert to dollars
+        const priceUSD = price / yenValue;
+
+        // F: display input and result string with commas
+        resultSpan.textContent = "$" + priceUSD.toFixed(2);
+      }
+
+      priceInput.addEventListener("input", calculate);
+      yenInput.addEventListener("change", calculate);
+    </script>
   </body>
 </html>
