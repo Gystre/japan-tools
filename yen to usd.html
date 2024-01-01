@@ -59,6 +59,10 @@
       const yenInput = document.getElementById("yenInput");
       const resultSpan = document.getElementById("resultSpan");
 
+      function addCommas(numberString) {
+        return numberString.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
       function calculate() {
         const price = parseFloat(priceInput.value);
         const yenValue = parseFloat(yenInput.value);
@@ -66,8 +70,8 @@
         // convert to dollars
         const priceUSD = price / yenValue;
 
-        // F: display input and result string with commas
-        resultSpan.textContent = "$" + priceUSD.toFixed(2);
+        // resultSpan.textContent = "$" + priceUSD.toFixed(2);
+        resultSpan.textContent = "$" + addCommas(priceUSD.toFixed(2));
       }
 
       priceInput.addEventListener("input", calculate);
