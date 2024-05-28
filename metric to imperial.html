@@ -24,18 +24,18 @@
 
       input,
       select {
-        font-size: 14px;
+        font-size: 16px;
       }
     </style>
   </head>
   <body>
     <div style="margin-bottom: 8px; text-align: center">
-      <h1>Metric to Imperial</h1>
+      <h1 style="font-size: 24px">Metric to Imperial</h1>
       By Kyle!
     </div>
-    <h2>Length</h2>
+    <h2 style="font-size: 20px">Length</h2>
     <!-- input that is able to convert from mm, cm, m km to in, ft, and miles -->
-    <div style="margin-bottom: 4px">
+    <div>
       <input
         style="width: 64px"
         type="number"
@@ -54,8 +54,10 @@
         <option value="ft">feet</option>
         <option value="mi">miles</option>
       </select>
-      is
-      <span id="imperialLengthResult"></span>
+      <div style="display: flex; align-items: center; flex-direction: column">
+        is
+        <div id="imperialLengthResult" style="height: 20px"></div>
+      </div>
     </div>
 
     <script>
@@ -98,7 +100,7 @@
       imperialSelect.addEventListener("change", convertAndDisplay);
     </script>
 
-    <h2 style="margin-top: 8px">Temperature</h2>
+    <h2 style="font-size: 20px; margin-top: 4px">Temperature</h2>
     <div>
       <input
         style="width: 64px"
@@ -106,8 +108,12 @@
         id="celciusInput"
         placeholder="Celcius"
       />
-      C° is
-      <span id="fahrenheitResult"></span>
+      C°
+
+      <div style="display: flex; align-items: center; flex-direction: column">
+        is
+        <div id="fahrenheitResult" style="height: 20px"></div>
+      </div>
     </div>
     <script>
       const celciusInput = document.getElementById("celciusInput");
@@ -121,7 +127,7 @@
 
       celciusInput.addEventListener("input", convertAndDisplay);
     </script>
-    <h2 style="margin-top: 8px">Weight</h2>
+    <h2 style="margin-top: 4px; font-size: 20px">Weight</h2>
     <div>
       <input
         style="width: 64px"
@@ -138,8 +144,10 @@
         <option value="oz">oz</option>
         <option value="lb" selected>lb</option>
       </select>
-      is
-      <span id="imperialWeightResult"></span>
+      <div style="display: flex; align-items: center; flex-direction: column">
+        is
+        <div id="imperialWeightResult" style="height: 20px"></div>
+      </div>
     </div>
     <script>
       const metricWeightInput = document.getElementById("metricWeightInput");
